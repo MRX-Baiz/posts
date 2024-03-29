@@ -15,7 +15,7 @@ def index(request):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
-            return redirect('home page')
+            return redirect('home-page')
     else:
         form = PostForm()
     context = {

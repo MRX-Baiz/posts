@@ -12,8 +12,14 @@
                         <form method="POST">
                             {% csrf_token  %}
                             {{ form|crispy }}
-                            <input class="btn btn-dark btn-block" type="submit" value="Login">
+                            <input class="btn btn-dark btn-block my-4" type="submit" value="Login">
                         </form>
+                        <div class="text-center">
+                            <hr>
+                            <a href=""> Forget Password ? </a>
+                            <hr>
+                            <a class="btn btn-secondary mt-2" href="{% url 'sign-up-page' %}"> Create An Account here </a>
+                        </div>
                     </div>
                 </div>
             </div>

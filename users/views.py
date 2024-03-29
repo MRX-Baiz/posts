@@ -9,7 +9,7 @@ def sign_up(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home page')
+            return redirect('home-page')
     else:
         form = SignUpForm()
     context = {
