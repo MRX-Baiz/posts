@@ -11,7 +11,7 @@ def sign_up(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home-page')
+            return redirect('login_page')
     else:
         form = SignUpForm()
     context = {
@@ -19,8 +19,10 @@ def sign_up(request):
     }
     return render(request, 'users/sign_up.html', context)
 
+
 def profile(request):
         return render(request, 'users/profile.html')
+
 
 def logout_user(request):
     logout(request)

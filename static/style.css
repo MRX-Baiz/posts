@@ -1,0 +1,5 @@
+.cover {
+    background-image: url("../media/background.png");
+    background-position: center;
+    height: 100vh;
+}
