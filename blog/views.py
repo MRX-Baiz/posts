@@ -24,5 +24,15 @@ def index(request):
     }
     return render(request, 'blog/index.html', context)
 
+
 def about(request):
     return render(request, 'blog/about.html')
+
+
+def post_details(request, pk):
+    post = PostModel.objects.get(id=pk)
+    context = {
+            'post': post,
+    }
+
+    return render(request, 'blog/post_details.html', context)
