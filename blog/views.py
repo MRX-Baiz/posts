@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm, PostUpdate, CommentForm
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 
-
+@login_required
 def index(request):
     posts = Post.objects.all()
     if request.method == 'POST': 
@@ -29,6 +29,7 @@ def about(request):
     return render(request, 'blog/about.html')
 
 
+@login_required
 def post_details(request, pk):
     post = Post.objects.get(id=pk)
     if request.method == 'POST':
@@ -49,6 +50,7 @@ def post_details(request, pk):
     return render(request, 'blog/post_details.html', context)
 
 
+@login_required
 def post_edit(request, pk):
     post = Post.objects.get(id=pk)
     if request.method == 'POST':
@@ -64,6 +66,8 @@ def post_edit(request, pk):
     }
     return render(request, 'blog/post_edit.html', context)
 
+
+@login_required
 def post_delete(request, pk):
     post = Post.objects.get(id=pk)
     if request.method == 'POST':

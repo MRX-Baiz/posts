@@ -28,9 +28,10 @@
                             </a>
                         </p>
                         <div class="collapse" id="collapseExample">
-                            <div style="height: 500px; overflow-y: scroll;" class="card card-body">
+                            <div style="height: 250px; overflow-y: scroll;" class="card card-body">
                                 {% for comment in post.comments %}
                                 <p class="text-justify"> {{ comment.content }} </p>
+                                <hr>
                                 {% endfor %}
                             </div>
                         </div>
