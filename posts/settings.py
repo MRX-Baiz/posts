@@ -31,11 +31,22 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 # Render-specific configuration
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
+    # Render provides the hostname automatically
     ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME]
     CSRF_TRUSTED_ORIGINS = [f"https://{RENDER_EXTERNAL_HOSTNAME}"]
+
 else:
-    ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-    CSRF_TRUSTED_ORIGINS = []
+    # Local dev + other hosts
+    ALLOWED_HOSTS = os.environ.get(
+        "ALLOWED_HOSTS",
+        "127.0.0.1,localhost,khawla0.pythonanywhere.com"
+    ).split(",")
+
+    CSRF_TRUSTED_ORIGINS = [
+        f"https://{h.strip()}"
+        for h in ALLOWED_HOSTS
+        if h.strip() and h.strip() not in ["127.0.0.1", "localhost"]
+    ]
 
 
 # Application definition
