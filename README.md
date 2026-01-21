@@ -4,6 +4,8 @@
 
 BasicBlogger est une plateforme de blog développée avec Django permettant aux utilisateurs de créer, modifier et supprimer des articles, de commenter les publications et de gérer leur profil. L'application offre une interface responsive et intuitive pour partager des idées et interagir avec la communauté.
 
+**Lien du projet :** [https://khawla0.pythonanywhere.com/](https://khawla0.pythonanywhere.com/)
+
 ## Fonctionnalités
 
 - **CRUD des articles** : Création, lecture, modification et suppression d'articles de blog
