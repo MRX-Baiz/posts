@@ -2,13 +2,29 @@ from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm, PostUpdate, CommentForm
 from django.contrib.auth.decorators import login_required
+import logging
+
+logger = logging.getLogger('blog')
 
 # Create your views here.
 
 
 @login_required
 def index(request):
+    logger.debug("HIT blog.index view")
     posts = Post.objects.all()
+    
+    # Log profile data for each post
+    logger.debug(f"=== BLOG INDEX - Rendering {posts.count()} posts ===")
+    for post in posts:
+        author = post.author
+        profile = getattr(author, 'profilemodel', None)
+        logger.debug(
+            f"Post {post.id} | author={author.username} | "
+            f"profile_exists={profile is not None} | "
+            f"image={profile.image.name if profile else 'NO PROFILE'}"
+        )
+    
     if request.method == 'POST': 
         form = PostForm(request.POST)
         if form.is_valid():
