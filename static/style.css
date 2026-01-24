@@ -1,5 +1,380 @@
+/* ==========================================
+   BasicBlogger - Premium Custom Styles
+   Bootstrap base kept for structure only
+   ========================================== */
+
+/* ===== CSS Variables ===== */
+:root {
+    --primary-color: #2c3e50;
+    --primary-dark: #1a252f;
+    --accent-color: #3498db;
+    --accent-hover: #2980b9;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --border-color: #e1e8ed;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Global Resets ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* ===== Navbar Override ===== */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
+    box-shadow: var(--shadow-md);
+    padding: 1rem 0;
+    transition: var(--transition);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #ffffff !important;
+    transition: var(--transition);
+}
+
+.navbar-brand:hover {
+    transform: translateY(-2px);
+    color: var(--accent-color) !important;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    margin: 0 0.25rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.dropdown-item:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    padding-left: 1.75rem;
+}
+
+/* ===== Cards Premium Styling ===== */
+.card {
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: var(--transition) !important;
+    overflow: hidden;
+    background: var(--bg-white);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-4px);
+}
+
+.card-body {
+    padding: 1.5rem !important;
+}
+
+.card-title {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* ===== Buttons Premium ===== */
+.btn {
+    border-radius: var(--radius-md) !important;
+    padding: 0.625rem 1.5rem !important;
+    font-weight: 600 !important;
+    transition: var(--transition) !important;
+    border: none !important;
+    text-transform: none;
+    letter-spacing: 0.3px;
+}
+
+.btn-dark {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
+    color: #ffffff !important;
+}
+
+.btn-dark:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #0d1418 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--accent-hover) 0%, #1f6391 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger-color) 0%, #c0392b 100%) !important;
+    color: #ffffff !important;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c0392b 0%, #a02d21 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* ===== Forms Premium ===== */
+.form-control {
+    border: 2px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem;
+    transition: var(--transition) !important;
+    background-color: var(--bg-white);
+}
+
+.form-control:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.15) !important;
+    outline: none;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+label {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* ===== Images Premium ===== */
+.img-thumbnail {
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-sm) !important;
+    padding: 0.5rem !important;
+    background-color: var(--bg-white);
+    transition: var(--transition);
+}
+
+.img-thumbnail:hover {
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* ===== Container Spacing ===== */
+.container {
+    max-width: 1140px;
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+.pt-4 {
+    padding-top: 5rem !important; /* Account for fixed navbar */
+}
+
+/* ===== Posts List Styling ===== */
+.post-card {
+    margin-bottom: 2rem;
+}
+
+.post-author-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.post-meta {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.post-title {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.post-title:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+    transform: translateX(4px);
+}
+
+/* ===== Comments Section ===== */
+.comment-item {
+    border-left: 3px solid var(--accent-color);
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.comment-content {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ===== Alert Messages ===== */
+.alert {
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    padding: 1rem 1.25rem !important;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ===== Utility Classes ===== */
+.text-justify {
+    text-align: justify;
+}
+
+.shadow {
+    box-shadow: var(--shadow-md) !important;
+}
+
+.my-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+    
+    .card-body {
+        padding: 1rem !important;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.95rem;
+    }
+    
+    .post-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ===== Login/Signup Pages ===== */
 .cover {
-    background-image: url("../media/background.png");
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 50%, var(--accent-color) 100%);
+    background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== Profile Page ===== */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-color);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== Scrollbar Custom ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
 }
