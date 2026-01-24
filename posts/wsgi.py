@@ -14,3 +14,7 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'posts.settings')
 
 application = get_wsgi_application()
+
+# Startup check for DEBUG and MEDIA serving
+from posts.startup_check import check_media_serving
+check_media_serving()
