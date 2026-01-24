@@ -26,6 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-)zt*u#earoixews)6+#^679ll$(2fi-^r*=fv_l%q5gad7+lsy')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Set DEBUG=True via environment variable for local development
+# In PowerShell: $env:DEBUG="True"
+# In production: leave empty or set to False
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 # Render-specific configuration
@@ -66,7 +69,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+
+# WhiteNoise middleware only in production
+if not DEBUG:
+    MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
+
+MIDDLEWARE += [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -166,15 +175,20 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = (BASE_DIR / 'media')
 
-# Static files configuration for production
+# Static files configuration
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-# WhiteNoise configuration for static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Conditional static files storage based on environment
+if DEBUG:
+    # Development: Use default storage for instant CSS updates (no collectstatic needed)
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+else:
+    # Production: Use WhiteNoise with compression for optimal performance
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type
@@ -190,3 +204,36 @@ EMAIL_HOST_USER = 'faakeemail12@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# Logging configuration (DEV only)
+if DEBUG:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '[{levelname}] {asctime} {module} - {message}',
+                'style': '{',
+            },
+        },
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose',
+            },
+        },
+        'loggers': {
+            'django': {
+                'handlers': ['console'],
+                'level': 'INFO',
+            },
+            'users': {
+                'handlers': ['console'],
+                'level': 'DEBUG',
+            },
+            'blog': {
+                'handlers': ['console'],
+                'level': 'DEBUG',
+            },
+        },
+    }
